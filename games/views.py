@@ -1,10 +1,15 @@
-from django.shortcuts import render
+from .models import *   
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView , UpdateView 
 from .forms import PlayerForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+
+def test(request):
+    return render(request, 'games/test.html' )
 
 def login_user(request):
     logout(request)
