@@ -12,13 +12,12 @@ app_name = 'games'
 urlpatterns = [
     path('test', test, name='test'),
 
-    path('player-create/', PlayerCreate.as_view(), name='player-create'),
-    path('player-detail/<int:pk>/', login_required(PlayerDetail.as_view()), name='player-detail'),
+    path('player-create/', login_required(PlayerCreate.as_view()), name='player-create'),
+    path('player-detail/', login_required(PlayerDetail.as_view()), name='player-detail'),
     path('player-update/<int:pk>/', PlayerUpdate.as_view(), name='player-update'),
     path('player-delete/<int:pk>/', PlayerDelete.as_view(), name='player-delete'),
     
-    url(r'^login/$', login_user, name = 'login'),
-    # url(r'^main/$', main, name="main"),
+    url(r'^login/$', LoginView.as_view(), name = 'login'),
     url(r'^signup/$', signup, name='signup'),
     url(r'logout', LogoutView.as_view(template_name="games/logout.html"), name='logout')
 

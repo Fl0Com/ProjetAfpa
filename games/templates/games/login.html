@@ -15,7 +15,7 @@
 <div class="container blocContenu">
 
         <div id="login">
-                <form class="form-horizontal" name="LoginForm" action="{% url 'games:login' %}" method="post">
+                <form class="form-horizontal" name="LoginForm" method="post">
                 {% csrf_token %}
                 {% if next %}
                     <input type="hidden" name="next" value="{{ next }}" />

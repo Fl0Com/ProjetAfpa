@@ -51,16 +51,3 @@ class PlayerForm(ModelForm):
             #                   }),
             
         }
-
-class LoginForm(ModelForm):
-    class Meta:
-        model = User
-        fields = "__all__"
-
-class LogoutForm(forms.Form):
-    pass
-
-class UserForm(ModelForm):
-    class Meta :
-        model = User
-        fields = '__all__'

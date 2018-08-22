@@ -5,29 +5,16 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView , UpdateView 
 from .forms import PlayerForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView as BaseLoginView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 
 def test(request):
     return render(request, 'games/test.html' )
 
-def login_user(request):
-    logout(request)
-    username = password = ''
-    if request.POST:
-        username = request.POST['username']
-        password = request.POST['password']
 
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                return redirect('player-detail', )
-    return render(request, 'games/login.html')
-
-# @login_required(login_url='games/login/')
-# def main(request):
-#     return render(request, "games/main.html")
+class LoginView(BaseLoginView):
+    template_name = 'games/login.html'
 
 def signup(request):
     if request.method == 'POST':
@@ -43,14 +30,17 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'games/signup.html', {'form': form})
 
+
+class SignUp(CreateView):
+    pass
+
 #-------------- CRUD Player --------------------
 
 class PlayerCreate (CreateView):
     model = Player
     form_class = PlayerForm
-    # template_name = 'games/player-create.html'
     success_url = reverse_lazy('games:players')
-    template_name = 'games/registration.html'
+    template_name = 'games/player-create.html'
 
 class PlayerUpdate (UpdateView):
     model = Player
@@ -73,7 +63,11 @@ class PlayerDetail(DetailView):
     fields = '__all__'
     template_name = 'games/player-detail.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(PlayerDetail, self).get_context_data(**kwargs)
-        context['user'] = Player.objects.get(pk=self.kwargs['pk'])
-        return context
+    def get_object(self):
+        user = self.request.user
+        return user
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(PlayerDetail, self).get_context_data(**kwargs)
+    #     context['user'] = Player.objects.get(pk=self.kwargs['pk'])
+    #     return context
