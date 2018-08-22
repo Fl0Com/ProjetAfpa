@@ -1,0 +1,63 @@
+.entete{
+    height: 200px;
+    background-color: grey;
+}
+
+
+.logo{
+    margin-top: 60px;
+    
+}
+
+#logo{
+    text-align: center;
+    
+}
+
+.encadreTitre{
+    background-color: #f5f5dc;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.blocContenu{
+    margin-top: 50px;
+    min-height: 600px;
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+}
+
+.tabGame {
+    text-align: center;
+    min-height: 225px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .tabGame > [class^="col-"],
+  .tabGame > [class*=" col-"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .enteteTab{
+    border: 1px solid rgb(66, 52, 52);
+    background-color: grey;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.footer{
+    min-height: 200px;
+    padding-top: 100px;
+}
+
+/* [class*="col"] {
+    border: 1px solid blue;
+    border-radius: 4px;
+    text-align: center;
+ } */
+
+
