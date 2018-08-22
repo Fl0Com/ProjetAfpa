@@ -18,7 +18,7 @@ urlpatterns = [
     path('player-delete/<int:pk>/', PlayerDelete.as_view(), name='player-delete'),
     
     url(r'^login/$', LoginView.as_view(), name = 'login'),
-    url(r'^signup/$', signup, name='signup'),
+    url(r'^signup/$', SignUp.as_view(), name='signup'),
     url(r'logout', LogoutView.as_view(template_name="games/logout.html"), name='logout')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

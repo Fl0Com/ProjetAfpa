@@ -1,6 +1,8 @@
 from django.forms import ModelForm, FileInput, EmailInput, TextInput, DateInput
-from .models import *
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+
+from .models import *
 
 
 class PlayerForm(ModelForm):
@@ -51,3 +53,9 @@ class PlayerForm(ModelForm):
             #                   }),
             
         }
+
+class SignUpForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ('username', 'password',)
+        # exclude = ('username',)

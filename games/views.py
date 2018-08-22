@@ -2,12 +2,11 @@ from .models import *
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView , UpdateView 
-from .forms import PlayerForm
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView , UpdateView , FormView
+from .forms import PlayerForm, SignUpForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
 
 def test(request):
     return render(request, 'games/test.html' )
@@ -16,23 +15,37 @@ def test(request):
 class LoginView(BaseLoginView):
     template_name = 'games/login.html'
 
-def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+class SignUp(CreateView):
+    template_name = 'games/test.html'
+    form_class = SignUpForm
+    success_url = reverse_lazy('games:player-detail')
+
+    def post(self, request):
+        form = SignUpForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password')
+            password = form.cleaned_data.get('password')
             form.save()
             user = form.save()
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return HttpResponse("Success")
-    else:
-        form = UserCreationForm()
-    return render(request, 'games/signup.html', {'form': form})
 
 
-class SignUp(CreateView):
-    pass
+
+
+# def signup(request):
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             raw_password = form.cleaned_data.get('password')
+#             form.save()
+#             user = form.save()
+#             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+#             return HttpResponse("Success")
+#     else:
+#         form = UserCreationForm()
+#     return render(request, 'games/signup.html', {'form': form})
+
 
 #-------------- CRUD Player --------------------
 
