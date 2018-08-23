@@ -18,16 +18,16 @@ class LoginView(BaseLoginView):
 class SignUp(CreateView):
     template_name = 'games/test.html'
     form_class = SignUpForm
-    success_url = reverse_lazy('games:player-detail')
+    success_url = reverse_lazy('games:player-create')
 
-    def post(self, request):
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            form.save()
-            user = form.save()
-            return HttpResponse("Success")
+    # def post(self, request):
+    #     form = SignUpForm(request.POST)
+    #     if form.is_valid():
+    #         username = form.cleaned_data.get('username')
+    #         password = form.cleaned_data.get('password')
+    #         form.save()
+    #         user = form.save()
+    #         return HttpResponse("Success")
 
 
 

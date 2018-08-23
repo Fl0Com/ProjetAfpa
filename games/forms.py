@@ -57,5 +57,5 @@ class PlayerForm(ModelForm):
 class SignUpForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ('username', 'password',)
+        fields = ('username', 'password1', 'password2')
         # exclude = ('username',)
