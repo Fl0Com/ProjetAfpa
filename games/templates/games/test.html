@@ -6,19 +6,50 @@
 
 {% block css %}{% endblock css %}
 
-{% block titreCadre %}test{% endblock titreCadre %}
+{% block titreCadre %}Inscription{% endblock titreCadre %}
 
 {% block content %}
 
 
-<div class="container blocContenu" >
-    <form  method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="controls">
-            <button type="submit" class="btn">s'inscrire</button>
+<div class="container blocContenu">
+    <div class="container-fluid">
+        <div class="row mb-5"></div>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 border border-primary rounded p-5" >
+                <form method="post">
+                    {% csrf_token %}
+                    <div class='row mb-2'>
+                        Pseudo:
+                    </div>
+                    <div class='row mb-3'>
+                        {{ form.username }}
+                    </div>
+
+                    <div class='row mb-2'>
+                        Mot de Passe:
+                    </div>
+                    <div class='row mb-3'>
+                        {{ form.password1 }}
+                    </div>
+
+                    <div class='row mb-2'>
+                        Confirmation de mot de Passe:
+                    </div>
+                    <div class='row mb-3'>
+                        {{ form.password2 }}
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-primary">s'inscrire</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
         </div>
-    </form>
+
+        <div class="row"></div>
+    </div>
 </div>
 
 {% endblock content %}
