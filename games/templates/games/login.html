@@ -13,33 +13,37 @@
 
 
 <div class="container blocContenu">
-
-        <div id="login">
-                <form class="form-horizontal" name="LoginForm" method="post">
-                {% csrf_token %}
-                {% if next %}
-                    <input type="hidden" name="next" value="{{ next }}" />
-                {% endif %}
-                <div class="control-group">
-                    <label class="control-label" for="username">Username</label>
-                    <div class="controls">
-                        <input type="text" id="username" name="username"  placeholder="Username">
-                    </div>
+        <div class="container-fluid">
+            <div class="row mb-5"></div>
+    
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 border border-primary rounded p-5" >
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class='row mb-2'>
+                            Pseudo:
+                        </div>
+                        <div class='row mb-3'>
+                            {{ form.username }}
+                        </div>
+    
+                        <div class='row mb-2'>
+                            Mot de Passe:
+                        </div>
+                        <div class='row mb-3'>
+                            {{ form.password }}
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-primary">s'inscrire</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="password">Password</label>
-                    <div class="controls">
-                        <input type="password" name="password" id="password" placeholder="Password">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <button type="submit" class="btn">Login</button>
-                    </div>
-                </div>
-                </form>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
             </div>
-   
-</div>
+    
+            <div class="row"></div>
+        </div>
+    </div>
 
 {% endblock content %}

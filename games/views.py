@@ -1,7 +1,7 @@
 from .models import *   
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import CreateView, DetailView, ListView, TemplateView
+from django.views.generic import DetailView, TemplateView
 from .forms import PlayerForm, SignUpForm2, SignUpForm1
 from django.contrib.auth.views import LoginView as BaseLoginView, LogoutView as BaseLogoutView
 

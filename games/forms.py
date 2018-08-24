@@ -1,6 +1,5 @@
-from django.forms import ModelForm, FileInput, EmailInput, TextInput, DateInput
+from django.forms import ModelForm, FileInput, EmailInput, TextInput, DateInput, PasswordInput
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 
 from .models import *
 
@@ -12,14 +11,11 @@ class PlayerForm(ModelForm):
         widgets = {
             'dateNaissance': DateInput(attrs={
                 'type':"date", 
-                'class':"input-xlarge"
-                              }),
+                'class':"input-xlarge"}),
             'avatar': FileInput(attrs={
                 'type':"file", 
                 'placeholder':"Nom",
-                'class':"btn btn-outline-primary"
-                              })
-            
+                'class':"btn btn-outline-primary"})            
         }
 
 class SignUpForm1(ModelForm):
@@ -29,21 +25,17 @@ class SignUpForm1(ModelForm):
         widgets = {
             'last_name': TextInput(attrs={
             'class':"input-xlarge",
-            'placeholder':"Nom"
-                              }),
+            'placeholder':"Nom"}),
             'first_name': TextInput(attrs={
             'placeholder':"Prénom",
-            'class':"input-xlarge"
-                              }),
+            'class':"input-xlarge"}),
             'email': EmailInput(attrs={
             'placeholder':"Email",
-            'class':"input-xlarge"
-                              })
-            
+            'class':"input-xlarge"})            
         }
 
 
 class  SignUpForm2(forms.Form):
-    username = forms.CharField(max_length=150)
-    password1 = forms.CharField(max_length=150)
-    password2 = forms.CharField(max_length=150)
+    username = forms.CharField(widget=TextInput(attrs={'class':'input-xlarge','placeholder': 'Votre Pseudo'}))
+    password1 = forms.CharField(widget=PasswordInput(attrs={'class':'input-xlarge','placeholder': 'Mot de Passe'}))
+    password2 = forms.CharField(widget=PasswordInput(attrs={'class':'input-xlarge','placeholder': 'Mot de Passe'}))
