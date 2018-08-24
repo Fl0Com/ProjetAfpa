@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block headTitle %}Votre profil{% endblock headTitle %}
+{% block headTitle %}Player Detail{% endblock headTitle %}
 
 {% block css %}
 
@@ -10,7 +10,7 @@
 
 {% endblock css %}
 
-{% block titreCadre %}Player Detail{% endblock titreCadre %}
+{% block titreCadre %}Votre profil{% endblock titreCadre %}
 
 {% block content %}
 
@@ -18,93 +18,93 @@
 
 
 
-<div class="container col-md-8" id="logoutBox">
-        <div >Bonjour, {{ user.get_username }}</div>
+<div class="container col-md-8">
+    <div >Bonjour, {{ user.get_username }}</div>
 </div>
 
 <div class="container blocContenu">  
+    <div class="row">
+            <div class="col-lg-6">
+            </div>
+            <div  class="col-lg-6">
+            </div>
+        </div>                                 
+        <div class="row">
+            <div  class="col-lg-6">
                 <div class="row">
-                        <div class="col-lg-6 div20">
-                        </div>
-                        <div  class="col-lg-6 div20">
-                                <H2>Avatar : </H2>
-                        </div>
-                </div>                                 
-                <div class="row">
-                        <div  class="col-lg-6">
-                                <div class="row">
-                                        <div class="col-lg-3">
-                                                <label for="name"> Nom : </label>        
-                                        </div>
-                                        <div class="col-lg-9">
-                                                {{ user.last_name }}
-                                        </div>    
-                                </div>
-                                <div class="row">
-                                        <div class="col-lg-3">
-                                                <label for="Firstname"> Prénom : </label>        
-                                        </div>
-                                        <div class="col-lg-9">
-                                                <label for="Firstname">  
-                                                        {{ user.first_name }}
-                                                </label>
-                                        </div>    
-                                </div>
-                                <div class="row">
-                                        <div class="col-lg-3">
-                                                <label for="email"> Adresse Email : </label>        
-                                        </div>
-                                        <div class="col-lg-9">
-                                                <label for="email">  
-                                                        {{ user.email }}
-                                                </label>
-                                        </div>    
-                                </div>
-                                <div class="row">
-                                        <div class="col-lg-3">
-                                                <label for="datenaissance"> Date de Naissance : </label>        
-                                        </div>
-                                        <div class="col-lg-9">
-                                                <label for="datenaissance">  
-                                                        {{ user.player.dateNaissance }}
-                                                </label>
-                                        </div>    
-                                </div>
-                                <div class="row">
-                                        <div class="col-lg-3">
-                                                <label for="pseudo"> Pseudo : </label>        
-                                        </div>
-                                        <div class="col-lg-9">
-                                                <label for="pseudo">  
-                                                        {{ user.username }}
-                                                </label>
-                                        </div>    
-                                </div>
-                        </div>
-                        <div  class="col-lg-6">
-                                <div >
-                                        {% if user.player.avatar %}
-                                        <img  class="img-thumbnail" src="../{{ user.player.avatar.url }}">
-                                        {% else %}
-                                        <img class="img-thumbnail" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                                        {% endif %}
-                                </div>
-                                <style>
-
-                                </style>
-                        </div>
+                    <div class="col-lg-3">
+                        <label for="name"> Nom : </label>        
+                    </div>
+                    <div class="col-lg-9">
+                        {{ user.last_name }}
+                    </div>    
                 </div>
                 <div class="row">
-                        <div  class="col-lg-6">
-                                <div class="control-group">
-                                        <div class="controls">
-                                                        <a href='{% url "games:player-update" %}'><button class="btn btn-primary" >Modifier</button></a>
-                                                        <a href='{% url "games:logout" %}'><button class="btn btn-primary" >Déconnexion</button></a>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-lg-6"></div> 
-                </div> 
+                    <div class="col-lg-3">
+                        <label for="Firstname"> Prénom : </label>        
+                    </div>
+                    <div class="col-lg-9">
+                        <label for="Firstname">  
+                            {{ user.first_name }}
+                        </label>
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label for="email"> Adresse Email : </label>        
+                    </div>
+                    <div class="col-lg-9">
+                        <label for="email">  
+                            {{ user.email }}
+                        </label>
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label for="datenaissance"> Date de Naissance : </label>        
+                    </div>
+                    <div class="col-lg-9">
+                        <label for="datenaissance">  
+                            {{ user.player.dateNaissance }}
+                        </label>
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label for="pseudo"> Pseudo : </label>        
+                    </div>
+                    <div class="col-lg-9">
+                        <label for="pseudo">  
+                            {{ user.username }}
+                        </label>
+                    </div>    
+                </div>
+            </div>
+            <div  class="col-lg-6">
+                    <H2>Avatar : </H2>
+                <div >
+                            {% if user.player.avatar %}
+                            <img  class="img-thumbnail" src="../{{ user.player.avatar.url }}">
+                            {% else %}
+                            <img class="img-thumbnail" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                            {% endif %}
+                    </div>
+                    <style>
+
+                    </style>
+            </div>
+    </div>
+    <div class="row">
+            <div  class="col-lg-6">
+                    <div class="control-group">
+                            <div class="controls">
+                                            <a href='{% url "games:player-update" %}'><button class="btn btn-primary" >Modifier</button></a>
+                                            <a href='{% url "games:logout" %}'><button class="btn btn-primary" >Déconnexion</button></a>
+                            </div>
+                    </div>
+            </div>
+            <div class="col-lg-6"></div> 
+    </div> 
 
 </div>
 
