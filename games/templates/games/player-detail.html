@@ -10,14 +10,19 @@
 
 {% endblock css %}
 
-{% block titreCadre %}Votre profil{% endblock titreCadre %}
+{% block titreCadre %}Player Detail{% endblock titreCadre %}
 
 {% block content %}
 
 {% csrf_token %}
 
+
+
+<div class="container col-md-8" id="logoutBox">
+        <div >Bonjour, {{ user.get_username }}</div>
+</div>
+
 <div class="container blocContenu">  
-        <fieldset>
                 <div class="row">
                         <div class="col-lg-6 div20">
                         </div>
@@ -28,19 +33,11 @@
                 <div class="row">
                         <div  class="col-lg-6">
                                 <div class="row">
-                                        <div  class="col-lg-3">
-                                                <label for="gender"> Civilité : </label>        
-                                        </div>
-                                        <div  class="col-lg-9">
-                                                {{ user.player.gender }}        
-                                        </div>    
-                                </div>
-                                <div class="row">
                                         <div class="col-lg-3">
                                                 <label for="name"> Nom : </label>        
                                         </div>
                                         <div class="col-lg-9">
-                                                {{ player.user.last_name }}
+                                                {{ user.last_name }}
                                         </div>    
                                 </div>
                                 <div class="row">
@@ -49,7 +46,7 @@
                                         </div>
                                         <div class="col-lg-9">
                                                 <label for="Firstname">  
-                                                        {{ player.user.first_name }}
+                                                        {{ user.first_name }}
                                                 </label>
                                         </div>    
                                 </div>
@@ -59,7 +56,7 @@
                                         </div>
                                         <div class="col-lg-9">
                                                 <label for="email">  
-                                                        {{ player.user.email }}
+                                                        {{ user.email }}
                                                 </label>
                                         </div>    
                                 </div>
@@ -69,7 +66,7 @@
                                         </div>
                                         <div class="col-lg-9">
                                                 <label for="datenaissance">  
-                                                        {{ player.dateNaissance }}
+                                                        {{ user.player.dateNaissance }}
                                                 </label>
                                         </div>    
                                 </div>
@@ -79,28 +76,35 @@
                                         </div>
                                         <div class="col-lg-9">
                                                 <label for="pseudo">  
-                                                        {{ player.pseudo }}
+                                                        {{ user.username }}
                                                 </label>
                                         </div>    
                                 </div>
                         </div>
                         <div  class="col-lg-6">
                                 <div >
-                                        <img class="img-thumbnail" id="avatar"  src="../../{{ player.avatar.url }}">
+                                        {% if user.player.avatar %}
+                                        <img  class="img-thumbnail" src="../{{ user.player.avatar.url }}">
+                                        {% else %}
+                                        <img class="img-thumbnail" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                                        {% endif %}
                                 </div>
+                                <style>
+
+                                </style>
                         </div>
                 </div>
                 <div class="row">
                         <div  class="col-lg-6">
                                 <div class="control-group">
                                         <div class="controls">
-                                                <button class="btn btn-primary" onclick="window.location.href='http://127.0.0.1:8000/games/test'">Modifier</button>
+                                                        <a href='{% url "games:player-update" %}'><button class="btn btn-primary" >Modifier</button></a>
+                                                        <a href='{% url "games:logout" %}'><button class="btn btn-primary" >Déconnexion</button></a>
                                         </div>
                                 </div>
                         </div>
                         <div class="col-lg-6"></div> 
                 </div> 
-        </fieldset>
 
 </div>
 

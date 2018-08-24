@@ -14,12 +14,7 @@
 <div class="container blocContenu" >
     <form  method="post">
         {% csrf_token %}
-        {{ form.username.label }}
-        {{ form.username }}
-        {{ form.password1.label }}
-        {{ form.password1 }}
-        {{ form.password2.label }}
-        {{ form.password2 }}
+        {{ form.as_p }}
         <div class="controls">
             <button type="submit" class="btn">s'inscrire</button>
         </div>
