@@ -6,7 +6,7 @@ class Player(models.Model):
     
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="player")
     avatar = models.ImageField("avatar", null=True, blank=True, upload_to="avatar/")
-    dateNaissance = models.DateField(null=True)
+    dateNaissance = models.DateField(null=True, blank=True)
 
 
     def __str__(self):

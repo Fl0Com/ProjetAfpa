@@ -11,11 +11,12 @@ class PlayerForm(ModelForm):
         widgets = {
             'dateNaissance': DateInput(attrs={
                 'type':"date", 
-                'class':"input-xlarge"}),
+                'class':"input-xlarge",
+                'value':'player.dateNaissance'}),
             'avatar': FileInput(attrs={
                 'type':"file", 
                 'placeholder':"Nom",
-                'class':"btn btn-outline-primary"})            
+                'class':"btn form-control-file"})            
         }
 
 class SignUpForm1(ModelForm):

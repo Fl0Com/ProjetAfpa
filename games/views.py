@@ -57,7 +57,7 @@ class PlayerUpdate (View):
 
 
 class SignUp(TemplateView):
-    template_name = 'games/test.html'
+    template_name = 'games/inscription.html'
 
     def get(self, request):
         form = SignUpForm2()
