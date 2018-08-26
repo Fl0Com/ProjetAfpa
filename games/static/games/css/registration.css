@@ -1,7 +1,3 @@
-body {
-    padding-top: 40px;
-  }
-
 
   /* [class*="col"] {
     background-color: lightblue; 
@@ -9,17 +5,4 @@ body {
     border-radius: 4px;  
   }  */
 
-  #avatar {
-    padding-top: 10px;
-    width: 150px;
-    height: 150px;
-  }
-
-  .div20 {
-    padding-top: 20px;
-  }
-
-  .div10{
-    padding-top:10px;
-  } 
 

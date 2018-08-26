@@ -23,26 +23,28 @@
         {% csrf_token %}
         <div class="row">
             <div  class="col-lg-6">
+                <div class="row mb-3">
+                </div>
                 <div class="row mt-2">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mr-4">
                         <label for="name"> Nom : </label>        
                     </div>
                     {{ user_form.last_name }}  
                     </div>
                 <div class="row mt-2">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mr-4">
                         <label for="Firstname"> Prénom : </label>        
                     </div>
                     {{ user_form.first_name }}     
                 </div>
                 <div class="row mt-2">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mr-4">
                         <label for="email"> Adresse Email : </label>        
                     </div>
                     {{ user_form.email }}
                 </div>
                 <div class="row mt-2">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mr-4">
                         <label for="datenaissance"> Date de Naissance : </label>        
                     </div>
 
@@ -53,25 +55,27 @@
                     {% endif %}
                 </div>
                 <div class="row mt-2">
-                <input class='btn btn-success' type= "submit" value = "Valider" />
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-4">
+                                <input class='btn btn-success' type= "submit" value = "Valider" />
+                        </div>
                 </div>
             </div>
             <div  class="col-lg-6">
                 <H2>Avatar : </H2>
                 <div >
                     {% if user.player.avatar %}
-                    <img  class="img-thumbnail" src="../{{ user.player.avatar.url }}">
+                    <img  class="img-thumbnail avatar" src="../{{ user.player.avatar.url }}">
                     {{ user.player.avatar }}
                     {% else %}
-                    <img class="img-thumbnail" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    <img class="img-thumbnail avatar" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
                 {% endif %}
                 </div>
-                <div class="row">
-                    <div  class="col-lg-6">   
-                        {{ player_form.avatar }}
-                    </div>
-                    <div  class="col-lg-6">
-                    </div>
+                <div class="row">   
+                    {{ player_form.avatar }}
                 </div>
             </div>
         </div>

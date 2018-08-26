@@ -28,25 +28,9 @@
     box-shadow:0 0 20px rgba(0,0,0,0.8);
 }
 
-.tabGame {
-    text-align: center;
-    min-height: 225px;
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .tabGame > [class^="col-"],
-  .tabGame > [class*=" col-"] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .enteteTab{
-    border: 1px solid rgb(66, 52, 52);
-    background-color: grey;
-    border-radius: 4px;
-    text-align: center;
+.avatar{
+    max-height: 250px;
+    max-width: 250px;
 }
 
 .footer{
@@ -54,14 +38,13 @@
     padding-top: 100px;
 }
 
-.espace{
-    min-height: 20%;
-}
- [class*="col"] {
+
+
+/*  [class*="col"] {
     border: 1px solid blue;
     border-radius: 4px;
     text-align: center;
- } 
+ }  */
 
 
 

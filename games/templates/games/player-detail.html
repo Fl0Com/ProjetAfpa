@@ -14,31 +14,24 @@
 
 {% block content %}
 
-
-
-
-<div class="container col-md-8">
+<div class="container col-md-8 encadreTitre">
     <div >Bonjour, {{ user.get_username }}</div>
 </div>
 
-<div class="container blocContenu">  
+<div class="container blocContenu">                              
     <div class="row">
-            <div class="col-lg-6">
+        <div  class="col-lg-6">
+            <div class="row mb-3">
             </div>
-            <div  class="col-lg-6">
-            </div>
-        </div>                                 
-        <div class="row">
-            <div  class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <label for="name"> Nom : </label>        
-                    </div>
-                    <div class="col-lg-9">
-                        {{ user.last_name }}
-                    </div>    
+            <div class="row  mt-2">
+                <div class="col-lg-3">
+                    <label for="name"> Nom : </label>        
                 </div>
-                <div class="row">
+                <div class="col-lg-9">
+                    {{ user.last_name }}
+                </div>    
+            </div>
+                <div class="row mt-2">
                     <div class="col-lg-3">
                         <label for="Firstname"> Prénom : </label>        
                     </div>
@@ -48,7 +41,7 @@
                         </label>
                     </div>    
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-lg-3">
                         <label for="email"> Adresse Email : </label>        
                     </div>
@@ -58,7 +51,7 @@
                         </label>
                     </div>    
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-lg-3">
                         <label for="datenaissance"> Date de Naissance : </label>        
                     </div>
@@ -68,7 +61,7 @@
                         </label>
                     </div>    
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-lg-3">
                         <label for="pseudo"> Pseudo : </label>        
                     </div>
@@ -80,31 +73,33 @@
                 </div>
             </div>
             <div  class="col-lg-6">
-                    <H2>Avatar : </H2>
+                <H2>Avatar : </H2>
                 <div >
-                            {% if user.player.avatar %}
-                            <img  class="img-thumbnail" src="../{{ user.player.avatar.url }}">
-                            {% else %}
-                            <img class="img-thumbnail" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                            {% endif %}
-                    </div>
-                    <style>
-
-                    </style>
+                    {% if user.player.avatar %}
+                    <img  class="img-thumbnail avatar" src="../{{ user.player.avatar.url }}">
+                    {% else %}
+                    <img class="img-thumbnail avatar" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    {% endif %}
+                </div>
             </div>
     </div>
-    <div class="row">
-            <div  class="col-lg-6">
-                    <div class="control-group">
-                            <div class="controls">
-                                            <a href='{% url "games:player-update" %}'><button class="btn btn-primary" >Modifier</button></a>
-                                            <a href='{% url "games:logout" %}'><button class="btn btn-primary" >Déconnexion</button></a>
+    <div class="row  mt-2">
+        <div  class="col-lg-6">
+                <div class="control-group">
+                        <div class="row">
+                            <div  class="col-lg-4"></div>
+                            <div  class="col-lg-4">
+                                <a href='{% url "games:player-update" %}'><button class="btn btn-primary" >Modifier</button></a>
                             </div>
-                    </div>
-            </div>
-            <div class="col-lg-6"></div> 
+                            <div  class="col-lg-4">
+                                <a href='{% url "games:logout" %}'><button class="btn btn-danger" >Déconnexion</button></a>
+                            </div>
+                        </div>
+                </div>
+        </div>
+        <div class="col-lg-6">
+        </div> 
     </div> 
-
 </div>
 
 {% endblock content %}
