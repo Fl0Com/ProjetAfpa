@@ -8,9 +8,6 @@ from django.contrib.auth.views import LoginView as BaseLoginView, LogoutView as 
 class LoginView(BaseLoginView):
     template_name = 'games/login.html'
 
-class LogoutView(BaseLogoutView):
-    pass
-
 class PlayerDetail(DetailView):
     model = Player
     fields = '__all__'
@@ -42,7 +39,7 @@ class PlayerUpdate (View):
         user_form = SignUpForm1(request.POST, instance=user)
 
         if user.player.dateNaissance:
-            date = user.player.dateNaissance# if user.player.dateNaissance else ''
+            date = user.player.dateNaissance
 
         if user_form.is_valid() and player_form.is_valid():
             player = player_form.save(commit=False)
@@ -54,7 +51,6 @@ class PlayerUpdate (View):
             user_form.save()
             player.save()
             
-            print('après la save', user.player.dateNaissance)
             return redirect('games:player-detail')
         context = {
             'player_form': player_form,

@@ -1,4 +1,4 @@
-from django.forms import ModelForm, FileInput, EmailInput, TextInput, DateInput, PasswordInput
+from django.forms import DateInput, EmailInput, FileInput, ModelForm, TextInput, PasswordInput
 from django import forms
 
 from .models import *

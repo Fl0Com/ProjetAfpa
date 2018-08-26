@@ -1,8 +1,9 @@
 from django.urls import path, re_path
 from django.conf import settings
-from django.conf.urls import include
-from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LogoutView as BaseLogoutView
+
 from .views import *
 
 app_name = 'games'
@@ -13,5 +14,5 @@ urlpatterns = [
     
     re_path(r'^login/$', LoginView.as_view(), name = 'login'),
     re_path(r'^signup/$', SignUp.as_view(), name='signup'),
-    re_path(r'logout', LogoutView.as_view(), name='logout')
+    re_path(r'logout', BaseLogoutView.as_view(), name='logout')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
