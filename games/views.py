@@ -41,13 +41,20 @@ class PlayerUpdate (View):
         player_form = PlayerForm(request.POST, request.FILES, instance=user.player)
         user_form = SignUpForm1(request.POST, instance=user)
 
+        if user.player.dateNaissance:
+            date = user.player.dateNaissance# if user.player.dateNaissance else ''
+
         if user_form.is_valid() and player_form.is_valid():
             player = player_form.save(commit=False)
+
+            if 'date' in locals():
+                player.dateNaissance = date
+
             player.user = user
             user_form.save()
             player.save()
             
-            print('valide')
+            print('après la save', user.player.dateNaissance)
             return redirect('games:player-detail')
         context = {
             'player_form': player_form,
